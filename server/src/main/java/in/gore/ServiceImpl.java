@@ -12,4 +12,13 @@ public class ServiceImpl extends HelloWorldServiceGrpc.HelloWorldServiceImplBase
         responseObserver.onNext(response);
         responseObserver.onCompleted();
     }
+
+    @Override
+    public void streamingHello(HelloWorld.HelloRequest request, StreamObserver<HelloWorld.HelloResponse> responseObserver) {
+        for (int i = 0; i<10; i++) {
+            HelloWorld.HelloResponse helloResponse = HelloWorld.HelloResponse.newBuilder().setText("testing").build();
+            responseObserver.onNext(helloResponse);
+        }
+        responseObserver.onCompleted();
+    }
 }

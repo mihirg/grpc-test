@@ -4,6 +4,7 @@ package in.gore;
 
 service HelloWorldService {
   rpc hello(HelloRequest) returns (HelloResponse) {}
+  rpc streamingHello(HelloRequest) returns (stream HelloResponse) {}
 }
 
 message HelloRequest {
