@@ -20,6 +20,10 @@ dependencies {
     implementation("javax.annotation:javax.annotation-api:1.3.2") // generated code uses annotations
     implementation("io.grpc:grpc-netty:${grpcVer}")
 
+    // https://mvnrepository.com/artifact/net.sf.uadetector/uadetector-parent
+    implementation("net.sf.uadetector:uadetector-resources:2014.10")
+
+
     testImplementation(platform("org.junit:junit-bom:5.9.1"))
     testImplementation("org.junit.jupiter:junit-jupiter")
 }

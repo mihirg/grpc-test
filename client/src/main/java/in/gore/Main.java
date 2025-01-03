@@ -14,10 +14,21 @@ public class Main {
                 Grpc.newChannelBuilder("localhost:45000", InsecureChannelCredentials.create()).build();
         HelloWorldServiceGrpc.HelloWorldServiceBlockingStub stub =
                 HelloWorldServiceGrpc.newBlockingStub(channel);
-        for (int i = 0; i< 100; i++) {
-            HelloWorld.HelloResponse mihir = stub.hello(HelloWorld.HelloRequest.newBuilder().setText("Mihir").build());
-            System.out.println(mihir.getText());
-            Thread.sleep(2000);
+//        for (int i = 0; i< 100; i++) {
+//            HelloWorld.HelloResponse mihir = stub.hello(HelloWorld.HelloRequest.newBuilder().setText("Mihir").build());
+//            System.out.println(mihir.getText());
+//            Thread.sleep(2000);
+//        }
+        try {
+            HelloWorld.HelloResponse resp = stub.hello(HelloWorld.HelloRequest.newBuilder().setText("Timbuktoo").build());
+            System.out.println(resp);
+            // sleep 6 mins
+            Thread.sleep(10 * 60 * 1000);
+            resp = stub.hello(HelloWorld.HelloRequest.newBuilder().setText("New York").build());
+            System.out.println(resp);
+        } catch (Exception exp) {
+            System.out.println(exp);
+            throw exp;
         }
     }
 }

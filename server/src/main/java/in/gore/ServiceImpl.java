@@ -8,6 +8,7 @@ public class ServiceImpl extends HelloWorldServiceGrpc.HelloWorldServiceImplBase
     @Override
     public void hello(HelloWorld.HelloRequest request, StreamObserver<HelloWorld.HelloResponse> responseObserver) {
         String text = request.getText();
+        System.out.println("Request received: "+ text + "\n");
         HelloWorld.HelloResponse response = HelloWorld.HelloResponse.newBuilder().setText("API Called").build();
         responseObserver.onNext(response);
         responseObserver.onCompleted();

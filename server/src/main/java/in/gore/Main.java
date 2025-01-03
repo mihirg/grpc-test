@@ -2,6 +2,7 @@ package in.gore;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
+import io.grpc.netty.NettyServerBuilder;
 
 import java.io.IOException;
 
@@ -10,7 +11,7 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws Exception {
         System.out.println("Starting server");
-        Server start = ServerBuilder.forPort(45000)
+        Server start = NettyServerBuilder.forPort(45000)
                 .addService(new ServiceImpl())
                 .build()
                 .start();
